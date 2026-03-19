@@ -998,6 +998,46 @@
     </footer>
 
     <script>
+        function capturePosthogEvent(eventName, properties) {
+            if (!window.posthog || typeof window.posthog.capture !== 'function') return;
+            posthog.capture(eventName, properties || {});
+        }
+
+        function trackLinkClick(link) {
+            var linkHref = link.getAttribute('href') || '';
+            var linkText = (link.textContent || '').trim().slice(0, 100);
+            capturePosthogEvent('link_clicked', {
+                page: 'index',
+                link_text: linkText,
+                href: linkHref,
+                in_modal: !!link.closest('#contact-modal'),
+                opens_modal: linkHref === '#' && (link.getAttribute('onclick') || '').indexOf('openContactModal') !== -1
+            });
+        }
+
+        function trackButtonClick(button) {
+            capturePosthogEvent('button_clicked', {
+                page: 'index',
+                button_text: (button.textContent || '').trim().slice(0, 100),
+                button_type: button.getAttribute('type') || 'button',
+                button_id: button.id || '',
+                button_class: button.className || '',
+                in_modal: !!button.closest('#contact-modal')
+            });
+        }
+
+        // PostHog: attach click listeners to each link and button (includes modal content)
+        document.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                trackLinkClick(link);
+            });
+        });
+        document.querySelectorAll('button').forEach(function (button) {
+            button.addEventListener('click', function () {
+                trackButtonClick(button);
+            });
+        });
+
         // Update current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 

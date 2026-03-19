@@ -1673,28 +1673,56 @@
     </footer>
 
     <script>
+        function capturePosthogEvent(eventName, properties) {
+            if (!window.posthog || typeof window.posthog.capture !== 'function') return;
+            posthog.capture(eventName, properties || {});
+        }
+
         // PostHog: fire a custom event when the landing page is fully loaded
         document.addEventListener('DOMContentLoaded', function() {
-            if (window.posthog && typeof window.posthog.capture === 'function') {
-                posthog.capture('landing_page_loaded', { page: 'home', url: window.location.href });
-            }
+            capturePosthogEvent('landing_page_loaded', { page: 'home', url: window.location.href });
         });
 
-        // PostHog: track link clicks (delegated)
-        document.addEventListener('click', function(e) {
-            var link = e.target && e.target.closest('a');
-            if (!link || !window.posthog || typeof window.posthog.capture !== 'function') return;
+        function getLinkLocation(link) {
+            if (link.closest('header') || link.closest('#nav-links')) return 'nav';
+            if (link.closest('#hero')) return 'hero';
+            if (link.closest('#contact') || link.closest('.cta-section')) return 'cta_section';
+            return 'page';
+        }
+
+        function trackLinkClick(link) {
             var href = link.getAttribute('href') || '';
             var linkText = (link.textContent || '').trim().slice(0, 100);
-            var location = 'page';
-            if (link.closest('header') || link.closest('#nav-links')) location = 'nav';
-            else if (link.closest('#hero')) location = 'hero';
-            else if (link.closest('#contact') || link.closest('.cta-section')) location = 'cta_section';
-            posthog.capture('link_clicked', {
+            capturePosthogEvent('link_clicked', {
+                page: 'signature',
                 link_text: linkText,
                 href: href,
-                link_location: location,
+                link_location: getLinkLocation(link),
+                in_modal: !!link.closest('#contact-modal'),
                 opens_modal: href === '#' && (link.getAttribute('onclick') || '').indexOf('openContactModal') !== -1
+            });
+        }
+
+        function trackButtonClick(button) {
+            capturePosthogEvent('button_clicked', {
+                page: 'signature',
+                button_text: (button.textContent || '').trim().slice(0, 100),
+                button_type: button.getAttribute('type') || 'button',
+                button_id: button.id || '',
+                button_class: button.className || '',
+                in_modal: !!button.closest('#contact-modal')
+            });
+        }
+
+        // PostHog: attach click listeners to each link and button (includes modal content)
+        document.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                trackLinkClick(link);
+            });
+        });
+        document.querySelectorAll('button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                trackButtonClick(button);
             });
         });
 
@@ -1714,7 +1742,7 @@
                 if (!id || seen[id] || !window.posthog || typeof window.posthog.capture !== 'function') return;
                 seen[id] = true;
                 var config = sectionConfig.find(function(c) { return c.id === id; });
-                posthog.capture('section_viewed', {
+                capturePosthogEvent('section_viewed', {
                     section_id: id,
                     section_name: config ? config.name : id
                 });
@@ -1814,9 +1842,6 @@
 
         // Function to open modal
         function openContactModal() {
-            if (window.posthog && typeof window.posthog.capture === 'function') {
-                posthog.capture('contact_modal_opened');
-            }
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
