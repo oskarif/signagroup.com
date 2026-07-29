@@ -1,1111 +1,1983 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signa | Business‑critical software for telecom, space & beyond</title>
-    <script src="analytics.js" defer></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NR606S1Q6D"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NR606S1Q6D');
-    </script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;600;700;800&family=Nunito:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a202c;
-            background: #ffffff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            min-height: 96px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 96px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            min-height: 96px;
-        }
-
-        .logo a {
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-image {
-            height: 68px;
-            width: auto;
-            display: block;
-            object-fit: contain;
-        }
-
-        .by-text {
-            font-size: 1.2rem;
-            font-weight: 400;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 0 0.3rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-family: 'Nunito', sans-serif;
-            text-decoration: none;
-            color: #4a5568;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links .active-link {
-            color: #667eea;
-        }
-
-        .nav-links .active-link::after {
-            width: 100%;
-        }
-
-        /* Prevent header CTA button from getting underline link effect */
-        .nav-links .nav-cta-button::after {
-            content: none;
-        }
-
-        .nav-cta-button {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white !important;
-            padding: 0.75rem 1.5rem !important;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            font-size: 0.95rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #5a67d8 0%, #4299e1 100%);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-        }
-
-        .nav-cta-button:hover {
-            color: white !important;
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(90, 103, 216, 0.4);
-        }
-
-        .nav-cta-button:hover::before {
-            opacity: 1;
-        }
-
-        .nav-cta-button:active {
-            transform: translateY(0);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-        }
-
-        /* Hamburger Menu */
-        .hamburger-menu {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-            position: relative;
-        }
-
-        .hamburger-line {
-            width: 100%;
-            height: 3px;
-            background: #4a5568;
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: center;
-        }
-
-        .hamburger-menu.active .hamburger-line:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .hamburger-menu.active .hamburger-line:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        .hamburger-menu.active .hamburger-line:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Hero / Intro */
-        .hero-about {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 250px 0 120px;
-        }
-
-        .hero-inner {
-            display: grid;
-            grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero-copy h1 {
-            font-family: 'Nunito', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-        }
-
-        .hero-copy p {
-            font-size: 1.15rem;
-            max-width: 540px;
-            opacity: 0.95;
-            margin-bottom: 1.75rem;
-        }
-
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.35rem 0.85rem;
-            border-radius: 999px;
-            background: rgba(15, 23, 42, 0.35);
-            border: 1px solid rgba(226, 232, 240, 0.4);
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .pill-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: #48bb78;
-        }
-
-        .hero-meta {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .hero-meta strong {
-            font-weight: 700;
-        }
-
-        .hero-illustration {
-            text-align: center;
-        }
-
-        .hero-illustration img {
-            max-width: 320px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 18px 50px rgba(15, 23, 42, 0.4));
-        }
-
-        /* Section bands (white borders between sections, like signature.html) */
-        section.section-band {
-            border-top: 8px solid #ffffff;
-        }
-
-        /* About content */
-        .about-section {
-            padding: 70px 0 80px;
-            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-illustration {
-            text-align: center;
-        }
-
-        .about-illustration img {
-            max-width: 280px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 16px 40px rgba(15, 23, 42, 0.12));
-        }
-
-        .about-heading {
-            font-family: 'Nunito', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #2d3748;
-            text-align: center;
-        }
-
-        .about-lead {
-            font-size: 1.05rem;
-            color: #4a5568;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .about-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            font-size: 0.98rem;
-            color: #4a5568;
-        }
-
-        .about-bullet {
-            margin-top: 0.4rem;
-            width: 9px;
-            height: 9px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            flex-shrink: 0;
-        }
-
-        .about-aside {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 1.75rem 1.5rem;
-            box-shadow: 0 16px 45px rgba(15, 23, 42, 0.08);
-            font-size: 0.95rem;
-            color: #4a5568;
-        }
-
-        .about-aside h3 {
-            font-family: 'Nunito', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #2d3748;
-            margin-bottom: 0.75rem;
-        }
-
-        .about-aside p {
-            margin-bottom: 0.75rem;
-        }
-
-        .about-aside p:last-child {
-            margin-bottom: 0;
-        }
-
-        .about-tagline {
-            font-weight: 600;
-            color: #2d3748;
-        }
-
-        /* Generic contact modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 0;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h2 {
-            font-family: 'Nunito', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .close {
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            line-height: 1;
-            padding: 0.25rem;
-            border-radius: 50%;
-            width: 2rem;
-            height: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .close:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .modal-body {
-            padding: 2rem;
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .contact-intro {
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .contact-image {
-            margin-bottom: 1.5rem;
-            display: flex;
-            justify-content: center;
-        }
-
-        .questions-illustration {
-            max-width: 200px;
-            height: auto;
-            opacity: 0.9;
-            filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.15));
-        }
-
-        .contact-intro p {
-            color: #4a5568;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
-        }
-
-        .contact-intro p:last-child {
-            margin-bottom: 0;
-            font-weight: 500;
-            color: #2d3748;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #2d3748;
-            font-family: 'Nunito', sans-serif;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Source Sans Pro', sans-serif;
-            transition: all 0.3s ease;
-            background-color: #f8fafc;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            background-color: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            font-family: 'Nunito', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Footer */
-        .signature-teaser {
-            padding: 70px 0 80px;
-            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
-        }
-
-        .signature-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .signature-text .about-heading {
-            margin-bottom: 0.75rem;
-        }
-
-        .signature-text .about-lead {
-            max-width: 640px;
-            margin-bottom: 1.25rem;
-        }
-
-        .signature-text .about-list {
-            margin-top: 0.75rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .signature-text .about-list li {
-            margin-bottom: 0.4rem;
-        }
-
-        .signature-cta {
-            margin-top: 1.5rem;
-            text-align: center;
-        }
-
-        .signature-illustration {
-            text-align: center;
-        }
-
-        .signature-image {
-            max-width: 320px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(0 16px 40px rgba(15, 23, 42, 0.18));
-        }
-
-        /* Footer */
-        footer {
-            background: #1a202c;
-            color: white;
-            padding: 32px 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        footer p + p {
-            margin-top: 0.4rem;
-            opacity: 0.85;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hamburger-menu {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                z-index: 1000;
-                padding: 0;
-                margin: 0;
-                display: flex;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links li {
-                margin: 0;
-            }
-
-            .nav-links a {
-                font-size: 1.2rem;
-                padding: 1rem 2rem;
-                border-radius: 8px;
-                transition: all 0.3s ease;
-            }
-
-            .nav-links a:hover {
-                background: rgba(102, 126, 234, 0.1);
-                transform: translateY(-2px);
-            }
-
-            .nav-links a.nav-cta-button {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white !important;
-                padding: 1rem 2rem !important;
-                border-radius: 12px;
-                font-size: 1.1rem;
-                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            }
-
-            .nav-links a.nav-cta-button:hover {
-                transform: translateY(-3px) scale(1.05);
-                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            }
-
-            .mobile-logo {
-                margin-bottom: 1rem !important;
-            }
-
-            .mobile-logo .logo {
-                font-size: 2rem;
-                margin-bottom: 0;
-            }
-
-            .mobile-logo .logo-image {
-                height: 2.2rem;
-            }
-
-            .mobile-logo .by-text {
-                font-size: 1.1rem;
-            }
-
-            .hero-inner {
-                grid-template-columns: minmax(0, 1fr);
-                text-align: center;
-            }
-
-            .hero-copy p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .pill-row {
-                justify-content: center;
-            }
-
-            .about-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .signature-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .signature-text {
-                order: 1;
-            }
-
-            .signature-illustration {
-                order: 2;
-            }
-
-            .modal-content {
-                margin: 2vh auto;
-                width: 95%;
-                max-width: none;
-                max-height: 80vh;
-            }
-        }
-
-        @media (min-width: 1025px) {
-            .mobile-logo {
-                display: none;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-about {
-                padding: 150px 0 80px;
-            }
-
-            .hero-copy h1 {
-                font-size: 2.4rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature — Wholesale Telecom Trading & Deal Management | Signa</title>
+
+<!-- SEO -->
+<meta name="description" content="Signature is Signa's deal management platform for wholesale voice and SMS carriers — faster deal creation, real-time margin visibility and fewer manual errors.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.signa.se/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Signature by Signa">
+<meta property="og:title" content="Signature — Wholesale Telecom Trading & Deal Management">
+<meta property="og:description" content="Manage bilateral wholesale voice and SMS agreements in one platform — real-time data, faster approvals, fewer manual errors.">
+<meta property="og:url" content="https://www.signagroup.com/">
+<meta property="og:image" content="https://www.signagroup.com/images/og-cover.png">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Signature",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Deal management and wholesale trading platform for bilateral voice and SMS agreements between telecom carriers.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Signa AB",
+    "url": "https://www.signagroup.com/",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Stockholm",
+      "addressCountry": "SE"
+    }
+  }
+}
+</script>
+
+<script src="analytics.js" defer></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --ink:#0D1220;
+  --ink-2:#161C2C;
+  --paper:#F1F2ED;
+  --paper-2:#E5E7DE;
+  --text:#12161F;
+  --text-onink:#EDEEE8;
+  --muted:#5B6270;
+  --muted-onink:#98A0B3;
+  --gold:#C9962F;
+  --gold-soft:#E9C88A;
+  --teal:#2E8F86;
+  --line-dark: rgba(237,238,232,0.12);
+  --line-light: rgba(18,22,31,0.12);
+  --radius: 2px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--paper);
+  color:var(--text);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  line-height:1.1;
+}
+
+.mono{
+  font-family:'IBM Plex Mono',monospace;
+  letter-spacing:0.02em;
+}
+
+a{color:inherit;text-decoration:none;}
+
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 32px;
+}
+
+section{position:relative;}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+
+:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+
+/* ---------- NAV ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(13,18,32,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-dark);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 32px;
+  max-width:1180px;margin:0 auto;
+}
+.brand{
+  display:flex;flex-direction:column;line-height:1;
+  color:var(--text-onink);
+}
+.brand .name{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:20px;font-weight:700;letter-spacing:-0.01em;
+}
+.brand .by{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;color:var(--muted-onink);letter-spacing:0.12em;
+  margin-top:3px;
+}
+.nav-links{
+  display:flex;align-items:center;gap:36px;
+}
+.nav-links a{
+  font-size:14px;color:var(--muted-onink);
+  transition:color .2s ease;
+}
+.nav-links a:hover{color:var(--text-onink);}
+.nav-cta{
+  font-size:13px !important;
+  font-family:'IBM Plex Mono',monospace;
+  color:var(--ink) !important;
+  background:var(--gold);
+  padding:10px 18px;
+  border-radius:var(--radius);
+  transition:background .2s ease;
+}
+.nav-cta:hover{background:var(--gold-soft);}
+.nav-toggle{display:none;}
+
+@media (max-width:860px){
+  .nav-links{
+    position:fixed;top:64px;left:0;right:0;
+    background:var(--ink);
+    flex-direction:column;align-items:flex-start;
+    gap:0;
+    max-height:0;overflow:hidden;
+    transition:max-height .3s ease;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav-links.open{max-height:400px;}
+  .nav-links a{width:100%;padding:16px 32px;border-top:1px solid var(--line-dark);}
+  .nav-toggle{
+    display:block;background:none;border:none;color:var(--text-onink);
+    font-size:24px;cursor:pointer;line-height:1;
+  }
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:var(--ink);
+  color:var(--text-onink);
+  padding:96px 0 0 0;
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:48px;
+  align-items:center;
+}
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;}
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--gold-soft);
+  margin-bottom:22px;
+}
+.eyebrow::before{
+  content:'';width:7px;height:7px;background:var(--gold);border-radius:50%;
+  box-shadow:0 0 0 3px rgba(201,150,47,0.25);
+}
+.hero h1{
+  font-size:clamp(34px,5vw,58px);
+  max-width:15ch;
+  margin-bottom:24px;
+}
+.hero p.lead{
+  font-size:18px;color:var(--muted-onink);
+  max-width:46ch;
+  margin-bottom:36px;
+}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 26px;
+  font-size:14px;font-weight:600;
+  border-radius:var(--radius);
+  transition:transform .15s ease, background .2s ease, border-color .2s ease;
+  cursor:pointer;border:1px solid transparent;
+}
+.btn-primary{
+  background:var(--gold);color:var(--ink);
+}
+.btn-primary:hover{transform:translateY(-1px);background:var(--gold-soft);}
+.btn-ghost{
+  border-color:var(--line-dark);color:var(--text-onink);
+  background:transparent;
+}
+.btn-ghost:hover{border-color:var(--gold-soft);}
+.btn-ghost-light{
+  border-color:var(--line-light);color:var(--text);
+}
+.btn-ghost-light:hover{border-color:var(--gold);}
+
+/* hero visual: world map */
+.hero-visual{position:relative;}
+.hero-visual svg{width:100%;height:auto;display:block;}
+.map-dot{fill:rgba(237,238,232,0.3);}
+.map-hub{fill:var(--gold);}
+.map-route{
+  stroke:rgba(201,150,47,0.4);
+  stroke-width:0.2;
+  fill:none;
+  stroke-linecap:round;
+}
+
+/* ---------- TICKER ---------- */
+.ticker-strip{
+  background:var(--ink-2);
+  border-top:1px solid var(--line-dark);
+  border-bottom:1px solid var(--line-dark);
+  overflow:hidden;
+  padding:14px 0;
+}
+.ticker-track{
+  display:flex;
+  width:max-content;
+  animation:tickerScroll 32s linear infinite;
+}
+@keyframes tickerScroll{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+.ticker-item{
+  display:flex;align-items:center;gap:10px;
+  padding:0 34px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;
+  color:var(--muted-onink);
+  white-space:nowrap;
+  border-right:1px solid var(--line-dark);
+}
+.ticker-item b{color:var(--text-onink);font-weight:500;}
+.tick-up{color:var(--teal);}
+.tick-pending{color:var(--gold-soft);}
+
+/* ---------- SECTION HEADERS ---------- */
+.section-head{
+  max-width:640px;
+  margin-bottom:56px;
+}
+.section-eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:600;
+  font-size:13px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:16px;
+  display:block;
+}
+.section-head h2{
+  font-size:clamp(26px,3.4vw,38px);
+  margin-bottom:16px;
+}
+.section-head p{
+  color:var(--muted);
+  font-size:16px;
+  max-width:56ch;
+}
+
+/* ---------- PAIN POINTS ---------- */
+.pain{
+  background:var(--paper);
+  padding:100px 0;
+}
+.pain-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line-light);
+  border:1px solid var(--line-light);
+}
+@media (max-width:800px){.pain-grid{grid-template-columns:1fr;}}
+.pain-card{
+  background:var(--paper);
+  padding:36px 32px;
+}
+.pain-card .tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;color:var(--muted);
+  border:1px solid var(--line-light);
+  display:inline-block;
+  padding:3px 8px;
+  border-radius:var(--radius);
+  margin-bottom:20px;
+}
+.pain-card h3{
+  font-size:19px;margin-bottom:10px;
+}
+.pain-card p{
+  color:var(--muted);font-size:15px;
+}
+
+.deploy-group{margin-bottom:32px;}
+.deploy-group:last-child{margin-bottom:0;}
+.group-label{
+  display:block;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:14px;
+}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+.grid-1{grid-template-columns:1fr;}
+@media (max-width:800px){.grid-2{grid-template-columns:1fr;}}
+.pain-card.accent-gold{border-top:2px solid var(--gold);}
+.pain-card.accent-teal{border-top:2px solid var(--teal);}
+
+/* ---------- FEATURES ---------- */
+.features{
+  background:var(--paper-2);
+  padding:100px 0;
+}
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:var(--line-light);
+  border:1px solid var(--line-light);
+}
+@media (max-width:900px){.feature-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.feature-grid{grid-template-columns:1fr;}}
+.feature-card{
+  background:var(--paper-2);
+  padding:32px 28px;
+  transition:background .25s ease;
+}
+.feature-card:hover{background:var(--paper);}
+.feature-icon{
+  width:38px;height:38px;
+  color:var(--gold);
+  margin-bottom:20px;
+}
+.feature-icon svg{width:100%;height:100%;display:block;}
+.feature-card h3{
+  font-size:17px;margin-bottom:8px;
+}
+.feature-card p{
+  color:var(--muted);font-size:14.5px;
+}
+
+/* ---------- STATS ---------- */
+.stats{
+  background:var(--ink);
+  color:var(--text-onink);
+  padding:88px 0;
+}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:40px;
+}
+@media (max-width:800px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+.stat b{
+  display:block;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(34px,4vw,46px);
+  color:var(--gold-soft);
+  margin-bottom:8px;
+}
+.stat span{
+  font-size:14px;color:var(--muted-onink);
+}
+
+/* ---------- ABOUT ---------- */
+.about{
+  background:var(--paper);
+  padding:110px 0;
+}
+.about-grid{
+  display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:start;
+}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:40px;}}
+.about-grid p{
+  font-size:16.5px;color:var(--muted);
+  margin-bottom:18px;
+}
+.about-grid p:last-child{margin-bottom:0;}
+.about-location{
+  display:flex;align-items:center;gap:10px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px;color:var(--text);
+  margin-top:28px;
+}
+.about-location::before{
+  content:'';width:7px;height:7px;background:var(--teal);border-radius:50%;
+}
+
+/* ---------- FINAL CTA ---------- */
+.final-cta{
+  background:var(--ink-2);
+  color:var(--text-onink);
+  padding:100px 0;
+  text-align:center;
+}
+.final-cta h2{
+  font-size:clamp(28px,4vw,42px);
+  max-width:20ch;
+  margin:0 auto 20px auto;
+}
+.final-cta p{
+  color:var(--muted-onink);font-size:16px;
+  max-width:50ch;margin:0 auto 40px auto;
+}
+.final-cta .cta-row{justify-content:center;margin-bottom:0;}
+
+/* ---------- CONTACT ---------- */
+.contact{
+  background:var(--paper);
+  padding:100px 0;
+}
+.contact-inner{
+  display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;
+}
+@media (max-width:900px){.contact-inner{grid-template-columns:1fr;}}
+.contact-form{
+  display:flex;flex-direction:column;gap:18px;
+}
+.field label{
+  display:block;font-size:13px;font-family:'IBM Plex Mono',monospace;
+  color:var(--muted);margin-bottom:8px;
+}
+.field input,.field textarea{
+  width:100%;
+  border:1px solid var(--line-light);
+  background:var(--paper);
+  padding:13px 14px;
+  font-family:'Inter',sans-serif;
+  font-size:15px;
+  color:var(--text);
+  border-radius:var(--radius);
+  transition:border-color .2s ease;
+}
+.field textarea{min-height:120px;resize:vertical;}
+.field input:focus,.field textarea:focus{
+  outline:none;border-color:var(--gold);
+}
+.contact-form .btn{align-self:flex-start;margin-top:6px;}
+
+/* ---------- CONSENT BANNER ---------- */
+.consent-banner{
+  position:fixed;left:0;right:0;bottom:0;z-index:100;
+  background:var(--ink);
+  color:var(--text-onink);
+  border-top:1px solid var(--line-dark);
+  padding:20px 32px;
+  display:none;
+  align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+}
+.consent-banner.show{display:flex;}
+.consent-text{font-size:13.5px;color:var(--muted-onink);max-width:640px;}
+.consent-text a{color:var(--gold-soft);text-decoration:underline;}
+.consent-actions{display:flex;gap:12px;flex-shrink:0;}
+.consent-actions .btn{padding:10px 18px;font-size:13px;}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:var(--ink);
+  color:var(--muted-onink);
+  padding:40px 0;
+  font-size:13px;
+}
+.footer-inner{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-logo{
+  height:36px;width:auto;display:block;opacity:0.9;
+}
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/signa_logo.png" alt="Signa Logo" class="logo-image">
-                </a>
-            </div>
 
-            <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle navigation menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-
-            <ul class="nav-links" id="nav-links">
-                <li class="mobile-logo">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="images/signa_logo.png" alt="Signa Logo" class="logo-image">
-                        </a>
-                    </div>
-                </li>
-                <li><a href="signature.html">Signature</a></li>
-                <!-- <li><a href="index.html" class="active-link">About Signa</a></li> -->
-                <li><a href="#" onclick="openContactModal(); return false;" class="nav-cta-button">Contact us
-                </a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero-about">
-            <div class="container">
-                <div class="hero-inner">
-                    <div class="hero-copy">
-                        <h1>We build the business‑critical software you always wanted.</h1>
-                        <div class="pill-row">
-                            <span class="pill"><span class="pill-dot"></span> Telecom & wholesale</span>
-                            <span class="pill"><span class="pill-dot"></span> Space & satellite</span>
-                            <span class="pill"><span class="pill-dot"></span> Custom internal tools</span>
-                        </div>
-                        <p>
-                            We've built pricing and trading tools for wholesale telecom carriers,  inventory platforms for large retailers during M&amp;A, booking systems for timeshare and travel, and the data models and pipelines that tie it all together.
-                        </p>
-                        <p>
-                            We've led several large rating and billing implementations for telcos, built business intelligence support for one of Swedens largest banks and led the rollout of a new GSaaS product for the space industry.
-                        </p>
-                        <p class="hero-meta">
-                            <strong>Based in Stockholm.</strong> Working with clients across Europe and beyond.
-                        </p>
-                    </div>
-                    <div class="hero-illustration">
-                        <img src="images/undraw_group-project_kow1.svg" alt="Team working together illustration">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="about-section section-band">
-            <div class="container">
-                <div class="about-grid">
-                    <div>
-                        <h2 class="about-heading">Deep domain experience, pragmatic delivery</h2>
-                        <p class="about-lead">
-                            Our background spans telecom wholesale, carrier operations, space-to-earth communications and inventory-heavy retail. We combine that with hands-on cloud, data and product engineering to ship things that make a difference.
-                        </p>
-                        <ul class="about-list">
-                            <li>
-                                <span class="about-bullet"></span>
-                                <span><strong>Wholesale telecom.</strong> Tools for wholesale trading, deal management, routing, pricing, margin analysis and operational visibility for global carriers and voice/SMS providers.</span>
-                            </li>
-                            <li>
-                                <span class="about-bullet"></span>
-                                <span><strong>Space & satellite.</strong> Product development for ground station communications, mission data, commercial tooling and connectivity products.</span>
-                            </li>
-                            <li>
-                                <span class="about-bullet"></span>
-                                <span><strong>Modern stacks.</strong> Cloud-native backends, web apps, data pipelines and integrations that play nicely with your existing systems.</span>
-                            </li>
-                            <li>
-                                <span class="about-bullet"></span>
-                                <span><strong>Other complex domains.</strong> Inventory and catalogue management, booking and scheduling, and other situations where software is tightly coupled to operations.</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="about-illustration">
-                        <img src="images/undraw_web-development_f0tp.svg" alt="Web development illustration">
-                    </div>
-                    <aside class="about-aside">
-                        <h3 class="about-heading">What sets us apart</h3>
-                        <p>
-                            Our focused team of experts work closely with your domain experts to meet your operational needs.
-                        </p>
-                        <p>
-                            Sometimes that means creating a sophisticated wholesale trading platform like Signature. 
-                        </p>
-                        <p>
-                            Sometimes that means automating scattered manual processes or bridging data silos.
-                        </p>
-                        <p class="about-tagline">
-                            If you operate in telecom, space or any other complex business and need software that understands your world, please contact us.
-                        </p>
-                        <p style="margin-top: 1.25rem; margin-bottom: 0; text-align: center;">
-                            <a href="#" onclick="openContactModal(); return false;" class="nav-cta-button">Contact us</a>
-                        </p>
-                    </aside>
-                </div>
-            </div>
-        </section>
-
-        <section class="signature-teaser section-band">
-            <div class="container">
-                <div class="signature-grid">
-                    <div class="signature-text">
-                        <h2 class="about-heading">
-                            <a href="signature.html" aria-label="Learn more about Signature" style="display: inline-block;">
-                                <img src="images/signature_logo.png" alt="Signature" style="max-width: 220px; width: 100%; height: auto; display: block; margin: 0 auto 2rem;">
-                            </a>
-                        </h2>
-                        <p class="about-lead">
-                            Signature is Signa's wholesale trading and deal management solution for global carriers &mdash; designed to take bilateral voice and SMS agreements out of spreadsheets and into a single, trustworthy system.
-                        </p>
-                        <ul class="about-list">
-                            <li>
-                                <span class="about-bullet"></span>
-                                <span><strong>Faster agreements.</strong> Create, review and approve deals in one place instead of scattered email threads.</span>
-                            </li>
-                            <li>
-                                <span class="about-bullet"></span>
-                                <span><strong>Clear economics.</strong> Simulate net impact of price changes before you sign. Track live deals with traffic and margin views.</span>
-                            </li>
-                            <li>
-                                <span class="about-bullet"></span>
-                                <span><strong>Less spreadsheet risk.</strong> Shared templates and built-in validation reduce copy‑paste errors and version drift.</span>
-                            </li>
-                            <li>
-                                <span class="about-bullet"></span>
-                                <span><strong>Built for telecom teams.</strong> Destination-based logic, numbering plans and approval workflows help speed up deal creation.</span>
-                            </li>
-                        </ul>
-                        <div class="signature-cta">
-                            <a href="signature.html" class="nav-cta-button">Learn more about Signature</a>
-                        </div>
-                    </div>
-                    <div class="signature-illustration">
-                        <img src="images/undraw_meeting_dunc.svg" alt="People collaborating around a table" class="signature-image">
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Generic contact modal for Signa -->
-    <div id="contact-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Get in touch</h2>
-                <span class="close" id="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="contact-intro">
-                    <div class="contact-image">
-                        <img src="images/undraw_questions_g2px.svg" alt="Questions illustration" class="questions-illustration">
-                    </div>
-                    <p>Working on something in telecom, space, connectivity, inventory/booking or another complex domain and need senior hands-on software help?</p>
-                    <p>Tell us a bit about your context and we’ll get back within 24 hours.</p>
-                </div>
-                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="2cd104b4-57b3-41f4-a94d-33c7858af157">
-                    <input type="hidden" name="subject" value="New inquiry from signa.se">
-
-                    <div class="form-group">
-                        <label for="name">Your name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Your email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Tell us about your project *</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                    <div class="h-captcha" data-captcha="true"></div>
-
-                    <button type="submit" class="submit-btn">Send message</button>
-                </form>
-            </div>
-        </div>
+<header>
+  <nav class="nav">
+    <a href="#" class="brand">
+      <img src="images/signature_logo_white.png" alt="Signature" style="height:36px;width:auto;display:block;">
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="https://cal.eu/signa/30min" target="_blank" rel="noopener noreferrer" class="nav-cta mono">Schedule demo</a>
     </div>
+  </nav>
+</header>
 
-    <footer>
-        <div class="container">
-            <p>&copy; <span id="current-year">2025</span> Signa AB | Org. Nr 556740-1368</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.85; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                Handcrafted in Stockholm, Sweden
-                <svg width="20" height="14" viewBox="0 0 20 14" style="border-radius: 2px;">
-                    <rect width="20" height="14" fill="#006AA7"/>
-                    <rect x="6" y="0" width="2" height="14" fill="#FECC00"/>
-                    <rect x="0" y="6" width="20" height="2" fill="#FECC00"/>
-                </svg>
-            </p>
+<!-- ---------- HERO ---------- -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Wholesale voice &amp; SMS · Deal management</span>
+      <h1>Telecom wholesale trading, reimagined.</h1>
+      <p class="lead">Stop losing margin to manual errors and slow approvals. Manage bilateral voice and SMS agreements in one intelligent platform — built for carrier deal desks, with real‑time data and workflows that keep pace with the market.</p>
+      <div class="cta-row">
+        <a href="https://cal.eu/signa/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Schedule a demo</a>
+        <a href="#features" class="btn btn-ghost">See features</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg id="worldMap" viewBox="0 -1 71 38" xmlns="http://www.w3.org/2000/svg">
+        <!-- static dot map generated by dotted-map -->
+        <g id="mapDots">
+<circle cx="11" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="17" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="27" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="28" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="29" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="30" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="0" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="2" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="3" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="4" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="5" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="6" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="7" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="8" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="9" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="27" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="28" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="29" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="30" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="68" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="69" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="70" cy="1" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="1" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="2" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="3" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="4" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="5" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="6" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="7" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="8" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="9" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="27" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="28" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="68" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="69" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="70" cy="2" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="1" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="2" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="3" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="4" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="5" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="6" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="7" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="8" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="9" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="17" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="27" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="31" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="32" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="68" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="69" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="70" cy="3" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="2" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="3" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="4" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="5" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="6" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="7" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="8" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="9" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="31" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="68" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="69" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="70" cy="4" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="1" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="2" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="3" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="4" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="5" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="6" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="7" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="8" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="9" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="68" cy="5" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="2" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="7" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="8" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="9" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="68" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="70" cy="6" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="2" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="3" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="8" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="9" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="69" cy="7" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="8" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="9" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="17" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="34" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="69" cy="8" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="9" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="17" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="9" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="17" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="10" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="17" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="11" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="17" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="34" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="12" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="10" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="17" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="34" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="13" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="11" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="17" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="14" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="12" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="18" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="34" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="15" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="13" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="33" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="34" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="49" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="50" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="54" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="16" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="14" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="32" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="33" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="34" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="48" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="53" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="55" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="17" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="15" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="16" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="33" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="34" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="47" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="51" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="56" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="18" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="32" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="33" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="34" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="52" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="19" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="33" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="34" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="35" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="36" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="37" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="20" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="21" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="38" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="57" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="59" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="22" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="19" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="27" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="28" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="58" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="23" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="27" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="24" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="27" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="43" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="44" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="46" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="25" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="26" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="27" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="26" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="45" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="27" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="25" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="39" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="42" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="62" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="63" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="28" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="24" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="40" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="41" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="60" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="61" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="64" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="65" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="29" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="30" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="30" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="23" cy="30" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="66" cy="30" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="67" cy="30" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="31" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="31" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="22" cy="31" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="32" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="33" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="33" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="34" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="21" cy="35" r="0.32" fill="rgba(237,238,232,0.32)" />
+<circle cx="20" cy="12" r="0.55" fill="#C9962F" />
+<circle cx="11" cy="14" r="0.55" fill="#C9962F" />
+<circle cx="17" cy="12" r="0.55" fill="#C9962F" />
+<circle cx="35" cy="9" r="0.55" fill="#C9962F" />
+<circle cx="36" cy="10" r="0.55" fill="#C9962F" />
+<circle cx="39" cy="6" r="0.55" fill="#C9962F" />
+<circle cx="26" cy="27" r="0.55" fill="#C9962F" />
+<circle cx="23" cy="29" r="0.55" fill="#C9962F" />
+<circle cx="36" cy="20" r="0.55" fill="#C9962F" />
+<circle cx="41" cy="27" r="0.55" fill="#C9962F" />
+<circle cx="42" cy="15" r="0.55" fill="#C9962F" />
+<circle cx="47" cy="16" r="0.55" fill="#C9962F" />
+<circle cx="51" cy="18" r="0.55" fill="#C9962F" />
+<circle cx="52" cy="15" r="0.55" fill="#C9962F" />
+<circle cx="61" cy="15" r="0.55" fill="#C9962F" />
+<circle cx="65" cy="14" r="0.55" fill="#C9962F" />
+<circle cx="57" cy="19" r="0.55" fill="#C9962F" />
+<circle cx="57" cy="21" r="0.55" fill="#C9962F" />
+<circle cx="67" cy="29" r="0.55" fill="#C9962F" />
+</g>
+        <g id="mapRoutes"></g>
+        <g id="mapPackages"></g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ticker -->
+  <div class="ticker-strip">
+    <div class="ticker-track mono" id="tickerTrack">
+      <div class="ticker-item"><b>SE&nbsp;→&nbsp;DE</b> margin <span class="tick-up">+2.1%</span> · approved</div>
+      <div class="ticker-item"><b>US&nbsp;→&nbsp;BR</b> margin −0.4% · <span class="tick-pending">pending review</span></div>
+      <div class="ticker-item"><b>UK&nbsp;→&nbsp;NG</b> rate updated · <span class="tick-up">opportunity flagged</span></div>
+      <div class="ticker-item"><b>FR&nbsp;→&nbsp;IN</b> renewal due · 14 days</div>
+      <div class="ticker-item"><b>NL&nbsp;→&nbsp;ZA</b> margin <span class="tick-up">+1.6%</span> · approved</div>
+      <div class="ticker-item"><b>ES&nbsp;→&nbsp;MX</b> new deal · <span class="tick-pending">draft</span></div>
+      <!-- duplicate for seamless loop -->
+      <div class="ticker-item"><b>SE&nbsp;→&nbsp;DE</b> margin <span class="tick-up">+2.1%</span> · approved</div>
+      <div class="ticker-item"><b>US&nbsp;→&nbsp;BR</b> margin −0.4% · <span class="tick-pending">pending review</span></div>
+      <div class="ticker-item"><b>UK&nbsp;→&nbsp;NG</b> rate updated · <span class="tick-up">opportunity flagged</span></div>
+      <div class="ticker-item"><b>FR&nbsp;→&nbsp;IN</b> renewal due · 14 days</div>
+      <div class="ticker-item"><b>NL&nbsp;→&nbsp;ZA</b> margin <span class="tick-up">+1.6%</span> · approved</div>
+      <div class="ticker-item"><b>ES&nbsp;→&nbsp;MX</b> new deal · <span class="tick-pending">draft</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- PAIN POINTS ---------- -->
+<section class="pain" id="benefits">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Slow deals are lost deals.</h2>
+      <p>The same three bottlenecks, deal after deal — and the reason Signature exists.</p>
+    </div>
+    <div class="pain-grid reveal">
+      <div class="pain-card">
+        <span class="tag mono">01 · ERRORS</span>
+        <h3>Manual errors</h3>
+        <p>Manual calculations and disconnected tools quietly introduce pricing errors that cost thousands per deal.</p>
+      </div>
+      <div class="pain-card">
+        <span class="tag mono">02 · SPEED</span>
+        <h3>Slow approvals</h3>
+        <p>Deals sit in email chains for weeks while competitors close similar agreements faster.</p>
+      </div>
+      <div class="pain-card">
+        <span class="tag mono">03 · DATA</span>
+        <h3>Outdated data</h3>
+        <p>Stale traffic reports and pricing mean missed opportunities and overcommitted, unprofitable routes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- FEATURES ---------- -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">One platform</span>
+      <h2>Everything a deal desk needs.</h2>
+      <p>From simple destination lists to complex tier-based agreements — manage every type of wholesale voice and SMS deal with confidence.</p>
+    </div>
+    <div class="feature-grid reveal">
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 27h26"/><path d="M7 27v-9"/><path d="M14 27V7"/><path d="M21 27v-13"/><path d="M28 27v-19"/></svg></div>
+        <h3>Real-time analytics &amp; dashboards</h3>
+        <p>Track deal performance with live traffic data and projections. See your portfolio's health at a glance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3" width="16" height="26" rx="1.5"/><path d="M12 10h8"/><path d="M12 15h8"/><path d="M12.5 21l2.5 2.5L19.5 19"/></svg></div>
+        <h3>Intelligent deal creation</h3>
+        <p>Build complex agreements in minutes, not hours. Smart templates adapt to your deal structure while keeping accuracy.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="16" r="3"/><circle cx="16" cy="16" r="3"/><circle cx="27" cy="16" r="3"/><path d="M8 16h5"/><path d="M19 16h5"/><path d="M13.5 17l1.7 1.7L19 15"/></svg></div>
+        <h3>Smart approval workflows</h3>
+        <p>Set up approval chains that match your organization. Email and in-app notifications keep deals moving.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4v9"/><path d="M16 13L7 24"/><path d="M16 13v11"/><path d="M16 13l9 11"/><circle cx="16" cy="4" r="2"/><circle cx="7" cy="26" r="2"/><circle cx="16" cy="26" r="2"/><circle cx="25" cy="26" r="2"/></svg></div>
+        <h3>Deal outcome simulation</h3>
+        <p>Model scenarios before you negotiate. See exactly how pricing changes affect your bottom line.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l3-6h18l3 6"/><rect x="4" y="10" width="24" height="18" rx="1.5"/><path d="M13 20h6"/></svg></div>
+        <h3>Complete deal archive</h3>
+        <p>Every version, every amendment, every change tracked automatically. Never lose context.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="2.4" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="8" stroke-dasharray="2 3.2"/><circle cx="16" cy="16" r="13" stroke-dasharray="1 4.2"/></svg></div>
+        <h3>Proactive market intelligence</h3>
+        <p>Automatic tracking of cost and price changes by destination. Get notified when the market shifts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3v7"/><path d="M21 3v7"/><path d="M8 10h16v6a8 8 0 01-16 0v-6z"/><path d="M16 24v5"/></svg></div>
+        <h3>Seamless integration</h3>
+        <p>Connect with your existing routing, billing and pricing systems — or run standalone with simple uploads.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4L9 28"/><path d="M23 4l-2 24"/><path d="M4 11.5h24"/><path d="M4 21.5h24"/></svg></div>
+        <h3>Numbering plan management</h3>
+        <p>Keep destination data fresh and accurate with automated updates. Never miss a routing change.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="6.5"/><circle cx="16" cy="16" r="1.6" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Advanced deal tracking</h3>
+        <p>Monitor performance with live traffic data. Track net cost and revenue in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- DEPLOYMENT MODELS ---------- -->
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Deployment</span>
+      <h2>Deploys the way you operate.</h2>
+      <p>Signature isn't tied to one delivery model — it fits into your infrastructure, runs on its own, or sits inside a product you already sell.</p>
+    </div>
+    <div class="reveal">
+      <div class="deploy-group">
+        <span class="group-label">For carriers</span>
+        <div class="pain-grid grid-2">
+          <div class="pain-card accent-gold">
+            <span class="tag mono">ON-SITE</span>
+            <h3>Integrated on-site</h3>
+            <p>Deployed inside your infrastructure, connected directly to your existing routing and billing systems.</p>
+          </div>
+          <div class="pain-card accent-gold">
+            <span class="tag mono">CLOUD</span>
+            <h3>Standalone cloud</h3>
+            <p>Run Signature as a hosted solution on its own — no integration required to get started.</p>
+          </div>
         </div>
-    </footer>
+      </div>
+      <div class="deploy-group">
+        <span class="group-label">For technology partners</span>
+        <div class="pain-grid grid-1">
+          <div class="pain-card accent-teal">
+            <span class="tag mono">WHITE-LABEL</span>
+            <h3>White-label</h3>
+            <p>Embedded into your own product and branding, so Signature is delivered as part of your existing portfolio — not ours.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Update current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+<!-- ---------- STATS ---------- -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <b>75%</b>
+        <span>Faster deal creation with intelligent templates</span>
+      </div>
+      <div class="stat">
+        <b>0</b>
+        <span>Manual calculation errors, with built-in validation</span>
+      </div>
+      <div class="stat">
+        <b>Live</b>
+        <span>Traffic and margin visibility, not last month's report</span>
+      </div>
+      <div class="stat">
+        <b>Full</b>
+        <span>Audit trail for every deal, amendment and approval</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Hamburger menu functionality
-        const hamburgerMenu = document.getElementById('hamburger-menu');
-        const navLinks = document.getElementById('nav-links');
+<!-- ---------- ABOUT ---------- -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="section-eyebrow">About Signa</span>
+      <h2>Built by telecom people, for telecom deal desks.</h2>
+    </div>
+    <div class="reveal">
+      <p>Signa is a senior, fast-moving software team based in Stockholm. We work close to the metal — no layers of account management between you and the people building your software. Before building products, we spent years inside telecom operators and carriers — leading rating and billing implementations, wholesale trading platforms and carrier operations tooling.</p>
+      <p>Signature grew out of that experience: the tool we kept wishing existed, built properly and put into the hands of deal desks everywhere. We work closely with our customers' teams to make sure it fits how wholesale trading actually happens — not how a generic CRM assumes it should.</p>
+      <div class="about-location">Based in Stockholm. Working with carriers across Europe and beyond.</div>
+    </div>
+  </div>
+</section>
 
-        hamburgerMenu.addEventListener('click', function () {
-            hamburgerMenu.classList.toggle('active');
-            navLinks.classList.toggle('active');
+<!-- ---------- FINAL CTA ---------- -->
+<section class="final-cta">
+  <div class="wrap">
+    <h2 class="reveal">Ready to see Signature with your own data?</h2>
+    <p class="reveal">Join the carriers who've already eliminated manual errors and accelerated their deal cycles.</p>
+    <div class="cta-row reveal">
+      <a href="https://cal.eu/signa/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Schedule a demo</a>
+      <a href="#contact" class="btn btn-ghost">Contact us</a>
+    </div>
+  </div>
+</section>
 
-            if (navLinks.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
+<!-- ---------- CONTACT ---------- -->
+<section class="contact" id="contact">
+  <div class="wrap contact-inner">
+    <div class="reveal">
+      <span class="section-eyebrow">Get in touch</span>
+      <h2 style="font-size:30px;margin-bottom:16px;">Let's talk about your deal desk.</h2>
+      <p style="color:var(--muted);font-size:16px;">Tell us a bit about your context and we'll get back within 24 hours. Prefer to talk live? Schedule a demo instead.</p>
+    </div>
+    <form class="contact-form reveal" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="2cd104b4-57b3-41f4-a94d-33c7858af157">
+      <input type="hidden" name="subject" value="New inquiry from signagroup.com">
+      <input type="checkbox" name="botcheck" style="display:none;">
+      <div class="field">
+        <label class="mono" for="name">NAME *</label>
+        <input id="name" name="name" type="text" required>
+      </div>
+      <div class="field">
+        <label class="mono" for="email">EMAIL *</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+      <div class="field">
+        <label class="mono" for="message">MESSAGE *</label>
+        <textarea id="message" name="message" required placeholder="Tell us about your deal desk and what's slowing it down."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="contact-submit">Send message</button>
+    </form>
+  </div>
+</section>
 
-        // Close menu when clicking a link
-        navLinks.addEventListener('click', function (e) {
-            if (e.target.tagName === 'A') {
-                hamburgerMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
+<div class="consent-banner" id="consentBanner">
+  <p class="consent-text">We use analytics cookies to understand how visitors use this site. See our <a href="/privacy">privacy policy</a>. You can change your choice at any time.</p>
+  <div class="consent-actions">
+    <button class="btn btn-ghost" id="consentDecline">Decline</button>
+    <button class="btn btn-primary" id="consentAccept">Accept</button>
+  </div>
+</div>
 
-        // Close menu on resize if going back to desktop
-        window.addEventListener('resize', function () {
-            if (window.innerWidth > 1024) {
-                hamburgerMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
+<footer>
+  <div class="wrap footer-inner">
+    <img src="images/signa_logo_white.png" alt="Signa" class="footer-logo">
+    <span>© <span id="footer-year">2025</span> Signa AB · Org. Nr 556740-1368</span>
+    <span style="display:inline-flex;align-items:center;gap:6px;">Handcrafted in Stockholm, Sweden <svg width="20" height="14" viewBox="0 0 20 14" style="border-radius:2px;flex-shrink:0;"><rect width="20" height="14" fill="#006AA7"/><rect x="6" y="0" width="2" height="14" fill="#FECC00"/><rect x="0" y="6" width="20" height="2" fill="#FECC00"/></svg></span>
+  </div>
+</footer>
 
-        // Generic contact modal functionality
-        const modal = document.getElementById('contact-modal');
-        const closeModal = document.getElementById('close-modal');
-        const contactForm = document.getElementById('contact-form');
+<script>
+  // ---------- Analytics consent (GDPR-friendly: GA4 only loads after accept) ----------
+  const GA_MEASUREMENT_ID = 'G-NR606S1Q6D';
 
-        function openContactModal() {
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+  function getCookie(name){
+    return document.cookie.split('; ').find(row => row.startsWith(name + '='))?.split('=')[1];
+  }
+  function setCookie(name, value, days){
+    const d = new Date();
+    d.setTime(d.getTime() + days*24*60*60*1000);
+    document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/;SameSite=Lax`;
+  }
+  function loadGoogleAnalytics(){
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
+  }
+
+  const consentBanner = document.getElementById('consentBanner');
+  const existingConsent = getCookie('signa_analytics_consent');
+
+  if (existingConsent === 'granted') {
+    loadGoogleAnalytics();
+  } else if (existingConsent !== 'denied') {
+    consentBanner.classList.add('show');
+  }
+
+  document.getElementById('consentAccept').addEventListener('click', () => {
+    setCookie('signa_analytics_consent', 'granted', 180);
+    consentBanner.classList.remove('show');
+    loadGoogleAnalytics();
+  });
+  document.getElementById('consentDecline').addEventListener('click', () => {
+    setCookie('signa_analytics_consent', 'denied', 180);
+    consentBanner.classList.remove('show');
+  });
+
+  // footer year
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // world map — static dots embedded above, packages animate between hubs
+  (function initWorldMap() {
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    const routesLayer = document.getElementById('mapRoutes');
+    const packagesLayer = document.getElementById('mapPackages');
+    if (!routesLayer || !packagesLayer) return;
+
+    // Hub SVG coordinates (viewBox 0 0 71 36), generated by dotted-map
+    const hubs = [[20,12],[11,14],[17,12],[35,9],[36,10],[39,6],[26,27],[23,29],[36,20],[41,27],[42,15],[47,16],[51,18],[52,15],[61,15],[65,14],[57,19],[57,21],[67,29]];
+
+    function pick(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    const packageColors = ['#E9C88A', '#2E8F86', '#C9962F'];
+
+    const active = [];
+    let rafRunning = false;
+
+    function quadPoint(x1, y1, qx, qy, x2, y2, t) {
+      const mt = 1 - t;
+      return [
+        mt * mt * x1 + 2 * mt * t * qx + t * t * x2,
+        mt * mt * y1 + 2 * mt * t * qy + t * t * y2,
+      ];
+    }
+
+    function tick(now) {
+      for (let i = active.length - 1; i >= 0; i--) {
+        const a = active[i];
+        const elapsed = (now - a.startTime) / 1000;
+        const t = Math.min(elapsed / a.dur, 1);
+
+        // opacity: fade in quickly, hold, fade out
+        let opacity;
+        if (t < 0.08) opacity = t / 0.08;
+        else if (t < 0.92) opacity = 1;
+        else opacity = 1 - (t - 0.92) / 0.08;
+
+        const [px, py] = quadPoint(a.x1, a.y1, a.qx, a.qy, a.x2, a.y2, t);
+        a.pkg.setAttribute('transform', `translate(${px.toFixed(3)},${py.toFixed(3)})`);
+        a.pkg.setAttribute('opacity', opacity.toFixed(3));
+        a.route.setAttribute('opacity', (opacity * 0.65).toFixed(3));
+
+        if (t >= 1) {
+          a.pkg.remove();
+          a.route.remove();
+          active.splice(i, 1);
         }
+      }
+      if (active.length > 0) {
+        requestAnimationFrame(tick);
+      } else {
+        rafRunning = false;
+      }
+    }
 
-        function closeContactModal() {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
+    function createPackage(from, to) {
+      const [x1, y1] = from;
+      const [x2, y2] = to;
+      const dist = Math.hypot(x2 - x1, y2 - y1);
+      const dur = dist * 0.18; // constant apparent speed across all routes
+      const color = pick(packageColors);
+
+      // quadratic control point for arc
+      const mx = (x1 + x2) / 2;
+      const my = (y1 + y2) / 2;
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const len = Math.hypot(dx, dy) || 1;
+      const bend = Math.min(12, len * 0.35);
+      const qx = mx - (dy / len) * bend;
+      const qy = my + (dx / len) * bend - bend * 0.2;
+
+      const pathD = `M ${x1} ${y1} Q ${qx.toFixed(2)} ${qy.toFixed(2)} ${x2} ${y2}`;
+
+      const route = document.createElementNS(SVG_NS, 'path');
+      route.setAttribute('d', pathD);
+      route.setAttribute('class', 'map-route');
+      route.setAttribute('opacity', '0');
+      routesLayer.appendChild(route);
+
+      const pkg = document.createElementNS(SVG_NS, 'g');
+      pkg.setAttribute('opacity', '0');
+      const box = document.createElementNS(SVG_NS, 'rect');
+      box.setAttribute('x', '-0.8');
+      box.setAttribute('y', '-0.65');
+      box.setAttribute('width', '1.6');
+      box.setAttribute('height', '1.3');
+      box.setAttribute('rx', '0.2');
+      box.setAttribute('fill', color);
+      const tape = document.createElementNS(SVG_NS, 'line');
+      tape.setAttribute('x1', '-0.8');
+      tape.setAttribute('y1', '0');
+      tape.setAttribute('x2', '0.8');
+      tape.setAttribute('y2', '0');
+      tape.setAttribute('stroke', '#0D1220');
+      tape.setAttribute('stroke-width', '0.15');
+      pkg.appendChild(box);
+      pkg.appendChild(tape);
+      packagesLayer.appendChild(pkg);
+
+      active.push({ pkg, route, x1, y1, qx, qy, x2, y2, dur, startTime: performance.now() });
+      if (!rafRunning) { rafRunning = true; requestAnimationFrame(tick); }
+    }
+
+    function spawnPackage() {
+      let fromIdx = Math.floor(Math.random() * hubs.length);
+      let toIdx = Math.floor(Math.random() * hubs.length);
+      while (toIdx === fromIdx) toIdx = Math.floor(Math.random() * hubs.length);
+      createPackage(hubs[fromIdx], hubs[toIdx]);
+    }
+
+    spawnPackage();
+    setTimeout(spawnPackage, 800);
+    setTimeout(spawnPackage, 1800);
+    setTimeout(spawnPackage, 2800);
+    setInterval(() => spawnPackage(), 600 + Math.random() * 600);
+  })();
+
+  // ---------- Contact form ----------
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('contact-submit');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(contactForm)
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          submitBtn.textContent = 'Message sent ✓';
+          submitBtn.style.background = '#2E8F86';
+          setTimeout(() => {
             contactForm.reset();
+            submitBtn.textContent = originalText;
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+          }, 2500);
+        } else {
+          throw new Error('Submission failed');
         }
+      })
+      .catch(() => {
+        submitBtn.textContent = 'Error — try again';
+        submitBtn.style.background = '#c0392b';
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 3000);
+      });
+    });
+  }
+</script>
 
-        closeModal.addEventListener('click', closeContactModal);
-
-        window.addEventListener('click', function (event) {
-            if (event.target === modal) {
-                closeContactModal();
-            }
-        });
-
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'Escape' && modal.style.display === 'block') {
-                closeContactModal();
-            }
-        });
-
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-
-            const formData = new FormData(contactForm);
-
-            console.log("posting...")
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    submitBtn.textContent = 'Message sent ✓';
-                    submitBtn.style.background = 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)';
-
-                    setTimeout(() => {
-                        closeContactModal();
-                        submitBtn.textContent = originalText;
-                        submitBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                        submitBtn.disabled = false;
-                    }, 2000);
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                submitBtn.textContent = 'Error – try again';
-                submitBtn.style.background = 'linear-gradient(135deg, #e53e3e 0%, #c53030 100%)';
-
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                    submitBtn.disabled = false;
-                }, 3000);
-            });
-        });
-
-        // Make openContactModal available for the nav link
-        window.openContactModal = openContactModal;
-    </script>
 </body>
 </html>
-
