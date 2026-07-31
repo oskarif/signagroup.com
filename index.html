@@ -43,6 +43,14 @@
 </script>
 
 <script src="analytics.js" defer></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NR606S1Q6D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NR606S1Q6D');
+</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
@@ -470,23 +478,6 @@ header{
 }
 .contact-form .btn{align-self:flex-start;margin-top:6px;}
 
-/* ---------- CONSENT BANNER ---------- */
-.consent-banner{
-  position:fixed;left:0;right:0;bottom:0;z-index:100;
-  background:var(--ink);
-  color:var(--text-onink);
-  border-top:1px solid var(--line-dark);
-  padding:20px 32px;
-  display:none;
-  align-items:center;justify-content:space-between;
-  gap:24px;flex-wrap:wrap;
-}
-.consent-banner.show{display:flex;}
-.consent-text{font-size:13.5px;color:var(--muted-onink);max-width:640px;}
-.consent-text a{color:var(--gold-soft);text-decoration:underline;}
-.consent-actions{display:flex;gap:12px;flex-shrink:0;}
-.consent-actions .btn{padding:10px 18px;font-size:13px;}
-
 /* ---------- FOOTER ---------- */
 footer{
   background:var(--ink);
@@ -521,7 +512,7 @@ footer{
 </header>
 
 <!-- ---------- HERO ---------- -->
-<section class="hero">
+<section class="hero" id="hero">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Wholesale voice &amp; SMS · Deal management</span>
@@ -1618,7 +1609,7 @@ footer{
 </section>
 
 <!-- ---------- DEPLOYMENT MODELS ---------- -->
-<section class="pain">
+<section class="pain" id="deployment">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="section-eyebrow">Deployment</span>
@@ -1695,7 +1686,7 @@ footer{
 </section>
 
 <!-- ---------- FINAL CTA ---------- -->
-<section class="final-cta">
+<section class="final-cta" id="cta">
   <div class="wrap">
     <h2 class="reveal">Ready to see Signature with your own data?</h2>
     <p class="reveal">Join the carriers who've already eliminated manual errors and accelerated their deal cycles.</p>
@@ -1735,15 +1726,7 @@ footer{
   </div>
 </section>
 
-<div class="consent-banner" id="consentBanner">
-  <p class="consent-text">We use analytics cookies to understand how visitors use this site. See our <a href="/privacy">privacy policy</a>. You can change your choice at any time.</p>
-  <div class="consent-actions">
-    <button class="btn btn-ghost" id="consentDecline">Decline</button>
-    <button class="btn btn-primary" id="consentAccept">Accept</button>
-  </div>
-</div>
-
-<footer>
+<footer id="footer">
   <div class="wrap footer-inner">
     <img src="images/signa_logo_white.png" alt="Signa" class="footer-logo">
     <span>© <span id="footer-year">2025</span> Signa AB · Org. Nr 556740-1368</span>
@@ -1752,50 +1735,6 @@ footer{
 </footer>
 
 <script>
-  // ---------- Analytics consent (GDPR-friendly: GA4 only loads after accept) ----------
-  const GA_MEASUREMENT_ID = 'G-NR606S1Q6D';
-
-  function getCookie(name){
-    return document.cookie.split('; ').find(row => row.startsWith(name + '='))?.split('=')[1];
-  }
-  function setCookie(name, value, days){
-    const d = new Date();
-    d.setTime(d.getTime() + days*24*60*60*1000);
-    document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/;SameSite=Lax`;
-  }
-  function loadGoogleAnalytics(){
-    if (window.gaLoaded) return;
-    window.gaLoaded = true;
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
-  }
-
-  const consentBanner = document.getElementById('consentBanner');
-  const existingConsent = getCookie('signa_analytics_consent');
-
-  if (existingConsent === 'granted') {
-    loadGoogleAnalytics();
-  } else if (existingConsent !== 'denied') {
-    consentBanner.classList.add('show');
-  }
-
-  document.getElementById('consentAccept').addEventListener('click', () => {
-    setCookie('signa_analytics_consent', 'granted', 180);
-    consentBanner.classList.remove('show');
-    loadGoogleAnalytics();
-  });
-  document.getElementById('consentDecline').addEventListener('click', () => {
-    setCookie('signa_analytics_consent', 'denied', 180);
-    consentBanner.classList.remove('show');
-  });
-
   // footer year
   document.getElementById('footer-year').textContent = new Date().getFullYear();
 

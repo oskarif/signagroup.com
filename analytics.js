@@ -11,7 +11,6 @@ posthog.init("phc_nIkISpycn4SQoijnu6Nbi8XBV2Vk2LCxkwBGUSKyGZF",{
         var path = window.location.pathname || "";
         var filename = path.split("/").pop() || "";
         if (!filename || filename === "index.html") return "index";
-        if (filename === "signature.html") return "signature";
         return filename.replace(".html", "") || "unknown";
     }
 
@@ -21,10 +20,10 @@ posthog.init("phc_nIkISpycn4SQoijnu6Nbi8XBV2Vk2LCxkwBGUSKyGZF",{
     }
 
     function getLinkLocation(link) {
-        if (link.closest("#contact-modal")) return "modal";
-        if (link.closest("header") || link.closest("#nav-links")) return "nav";
+        if (link.closest("header") || link.closest("#navLinks")) return "nav";
         if (link.closest("#hero")) return "hero";
-        if (link.closest("#contact") || link.closest(".cta-section")) return "cta_section";
+        if (link.closest("#cta") || link.closest(".final-cta")) return "cta_section";
+        if (link.closest("#contact")) return "contact";
         if (link.closest("footer")) return "footer";
         return "page";
     }
@@ -35,9 +34,7 @@ posthog.init("phc_nIkISpycn4SQoijnu6Nbi8XBV2Vk2LCxkwBGUSKyGZF",{
             page: pageName,
             link_text: (link.textContent || "").trim().slice(0, 100),
             href: href,
-            link_location: getLinkLocation(link),
-            in_modal: !!link.closest("#contact-modal"),
-            opens_modal: href === "#" && (link.getAttribute("onclick") || "").indexOf("openContactModal") !== -1
+            link_location: getLinkLocation(link)
         });
     }
 
@@ -48,8 +45,7 @@ posthog.init("phc_nIkISpycn4SQoijnu6Nbi8XBV2Vk2LCxkwBGUSKyGZF",{
             button_type: button.getAttribute("type") || "button",
             button_id: button.id || "",
             button_class: button.className || "",
-            link_location: button.closest("#contact-modal") ? "modal" : "page",
-            in_modal: !!button.closest("#contact-modal")
+            link_location: button.closest("#contact") ? "contact" : "page"
         });
     }
 
@@ -66,14 +62,16 @@ posthog.init("phc_nIkISpycn4SQoijnu6Nbi8XBV2Vk2LCxkwBGUSKyGZF",{
         });
     }
 
-    function trackSignatureSectionViews(pageName) {
-        if (pageName !== "signature" || typeof IntersectionObserver === "undefined") return;
+    function trackSectionViews(pageName) {
+        if (typeof IntersectionObserver === "undefined") return;
         var sectionConfig = [
             { id: "hero", name: "Hero" },
-            { id: "features", name: "Features" },
-            { id: "problem", name: "Problem" },
             { id: "benefits", name: "Benefits" },
-            { id: "contact", name: "Contact CTA" },
+            { id: "features", name: "Features" },
+            { id: "deployment", name: "Deployment" },
+            { id: "about", name: "About" },
+            { id: "cta", name: "Final CTA" },
+            { id: "contact", name: "Contact" },
             { id: "footer", name: "Footer" }
         ];
         var seen = {};
@@ -104,6 +102,6 @@ posthog.init("phc_nIkISpycn4SQoijnu6Nbi8XBV2Vk2LCxkwBGUSKyGZF",{
             url: window.location.href
         });
         attachClickListeners(pageName);
-        trackSignatureSectionViews(pageName);
+        trackSectionViews(pageName);
     });
 })();
